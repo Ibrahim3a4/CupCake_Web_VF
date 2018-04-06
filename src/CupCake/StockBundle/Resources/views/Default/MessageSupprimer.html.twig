@@ -1,0 +1,16 @@
+{% extends '@User/Default/dashboard.html.twig' %}
+{% block content %}
+    <div>
+<h1 align="center" class="title">Vous avez supprimer Votre produit  du Stock avec succés </h1>
+
+
+<img align="center" src="{{ asset('images/messagesupprimer.png')}}" alt="Logo"/>
+    <a href="{{ path('stock_affichageStock', {'idPat': idPatisserie}) }}">
+        <button class="btn btn-info"  type="submit" >
+                      <span class="btn-label">
+                        <i class="material-icons"  >check</i>
+                      </span>
+            Retour Vers le Stock
+        </button>
+    </a>
+{% endblock %}

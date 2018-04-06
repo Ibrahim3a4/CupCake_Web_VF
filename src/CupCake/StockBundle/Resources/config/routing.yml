@@ -1,0 +1,18 @@
+cup_cake_stock_homepage:
+    path:     /
+    defaults: { _controller: CupCakeStockBundle:Default:index }
+stock_affichageStock:
+  path:     /affichageStock/{idPat}
+  defaults: { _controller: CupCakeStockBundle:Default:affichageStock }
+stock_ajoutStock2:
+  path:     /ajoutStock2/{idPat}
+  defaults: { _controller: CupCakeStockBundle:Default:ajouter}
+stock_supprimerProduitStock:
+  path:     /supprimer/{idProduit}
+  defaults: { _controller: CupCakeStockBundle:Default:supprimerProduitStock }
+stock_MessagesupprimerProduitStock:
+  path:     /Messagesupprimer
+  defaults: { _controller: CupCakeStockBundle:Default:Messagesupprimer }
+stock_modif:
+  path:     /modifier/{idProduit}
+  defaults: { _controller: CupCakeStockBundle:Default:ModifierProduitStock}

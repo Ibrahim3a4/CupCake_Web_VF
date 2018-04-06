@@ -1,0 +1,74 @@
+{% extends '@User/Default/dashboard.html.twig' %}
+{% block dashboardContent %}
+<h1 align="center">Modifier Produit</h1>
+<form method="POST">
+
+    <table>
+        <tr>
+            <td>Libelle :</td>
+            <td><input class="form-control" type="text" name="libelle" value="{{ produit.libelleProduit }}"></td>
+        </tr>
+        <tr>
+            <td>Categorie :</td>
+            <td><input class="form-control" type="text" name ="categorie"  value="{{ produit.categorie }}"></td>
+        </tr>
+        <tr>
+            <td>Prix :</td>
+            <td><input class="form-control" type="text" name ="prix"  value="{{ produit.prix }}"></td>
+        </tr>
+        <tr>
+            <td>Date Expiration :</td>
+            <td><input class="form-control" type="date" name="dateExpiration" value="{{ produit.dateExpiration|date("Y-m-d") }}"></td>
+
+        </tr>
+
+        <tr>
+            <td>Quantite :</td>
+            <td><input class="form-control" type="text" name="quantite" value="{{ produit.quantite }}"></td>
+        </tr>
+
+        <tr>
+            <td>Description :</td>
+            <td><input class="form-control" type="text" name="description" value="{{ produit.description }}"></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+
+            </td>
+        </tr>
+             <tr>
+
+                 <td>
+                     <button class="btn btn-warning" onclick='swal({ title:"Félicitation!",
+                     text: "Produit Modifier avec succés !",
+                     type: "success", buttonsStyling: false,
+                      confirmButtonClass: "btn btn-success"})'>
+                      <span class="btn-label">
+                        <i class="material-icons"  >build</i>
+                      </span>
+               Modifier Le Produit
+            </button>
+                 </td>
+                 <td>
+                     <a href="{{ path('stock_affichageStock', {'idPat': 'produit.idPatisserie.getIdPatisserie()'}) }}">
+                     <button class="btn"  type="submit" >
+                      <span class="btn-label">
+                        <i class="material-icons"  ></i>
+                      </span>
+                         Annuler La modification Retour Vers le Stock
+                     </button>
+                         </a>
+                 </td>
+        </tr>
+
+    </table>
+
+</form>
+
+{% endblock %}

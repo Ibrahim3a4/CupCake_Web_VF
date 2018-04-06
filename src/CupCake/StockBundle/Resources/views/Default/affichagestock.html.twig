@@ -1,0 +1,167 @@
+{% extends '@User/Default/dashboard.html.twig' %}
+{% block dashboardContent %}
+    <script language="JavaScript">
+        function showNotification(from, align){
+
+
+            for (var i=0;i<10;i++)
+           if ($('#quantity_'+i).html()<=10 )
+           {
+            {
+                $.notify({
+                    icon: "warning",
+                    message: " Attention le produit "+" " + $('#libelle_'+i).html() + " a une Quantité = "+" " + $('#quantity_'+i).html()
+                },{
+                    type: 'danger',
+                    timer: 40000,
+                    placement: {
+                        from: from,
+                        align: align
+                    }
+                });
+            }}
+        }
+    </script>
+    <body onload="showNotification()">
+
+
+        <div class="content" >
+            <table >
+                <tr>
+                    <td>
+            <div class="container-fluid">
+                {% for s in produit %}
+                <a href="{{ path('stock_ajoutStock2', {'idPat': s.Patisserie.getIdPatisserie()}) }}">
+                    {% endfor %}
+                    <button class="btn btn-success"  type="submit" >
+                      <span class="btn-label">
+                        <i class="material-icons"  >room_service</i>
+                      </span>
+                        Ajouter Produit Au Stock
+                    </button>
+                </a>
+                {#<a href="{{ path('stock_calen') }}">#}
+                    {#<button class="btn btn-primary">#}
+                        {#<i class="material-icons"  >date_range</i>#}
+                        {#Mon Calendrier#}
+                    {#</button>#}
+                {#</a>#}
+            </div>
+                    </td>
+                </tr>
+        </div>
+    </table>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-icon card-header-rose">
+                                    <div class="card-icon">
+                                        <i class="material-icons">cake</i>
+                                    </div>
+                                    <a  class="btn btn-primary float-left"><h4>List Produit Stock</h4></a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                NomPatisserie
+                                            </th>
+                                            <th>
+                                                LibelleProduit
+                                            </th>
+                                            <th>
+                                                Categorie
+                                            </th>
+                                            <th>
+                                                Prix (DT)
+                                            </th>
+                                            <th>
+                                                Date_expiration
+                                            </th>
+                                            <th>
+                                                Quantite
+                                            </th>
+                                            <th>
+                                                Description
+                                            </th>
+                                            <th>
+                                                Image
+                                            </th>
+                                            <th>
+                                                Supprimer
+                                            </th>
+                                            <th>
+                                                Modifier
+                                            </th>
+                                            </thead>
+                                            {% for p in produit %}
+
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                   {{ p.idProduit }}
+                                                </td>
+                                                <td>
+                                                   {{   p.Patisserie.libellePatisserie}}
+                                                </td>
+                                                <td>
+                                                    {{   p.categorie}}
+                                                </td>
+                                                <td>
+                                                    <span id="libelle_{{p.idProduit}}">{{ p.libelleProduit}}</span>
+                                                </td>
+                                                <td>
+                                                    {{ p.prix}}
+                                                </td>
+                                                <td>
+                                                    {{ p.dateExpiration | date("d/m/y")}}
+                                                </td>
+                                                <td>
+
+                                                    <span id="quantity_{{p.idProduit}}">{{ p.quantite}}</span>
+                                                </td>
+                                                <td>
+                                                    {{p.description}}
+                                                </td>
+                                                <td>
+                                                    <img width="100" height="100" src="{{ asset('images/'~ p.image)  }}"  alt="image" />
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('stock_supprimerProduitStock',{'idProduit':p.idProduit}) }}">
+                                                    <button class="btn btn-danger" onclick="return confirm('Etes vous sur de vouloir supprimer ce produit ?')">
+                                                        <i class="material-icons">close</i> Supprimer
+
+                                                    </button>
+                                                    </a>
+
+                                                </td>
+                                                <td>
+                                                    <a href="{{ path('stock_modif', {'idProduit': p.idProduit}) }}">
+                                                        <button class="btn btn-warning" onclick="return confirm('Etes vous sur de vouloir modifier ce produit ?')">
+                                                            <i class="material-icons">build</i> Modifier
+                                                        </button>
+                                                    </a>
+                                                </td>
+
+                                            </tr>
+                                            </tbody>
+
+                                            {% endfor %}
+
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+{% endblock %}

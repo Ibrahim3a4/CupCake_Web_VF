@@ -1,0 +1,36 @@
+{% extends '@User/Default/dashboard.html.twig' %}
+    {% block dashboardContent %}
+
+
+    <div align="center">
+
+        <h1 class="card-title">Ajouter Produit Au Stock</h1>
+    Libelle Du Produit
+        <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="" name="LibelleProduit" id="categorie">
+            <option disabled selected> Veuillez Choisir Un Produit a ajouter au Stock</option>
+            {% for p in produit %}
+                <option value="{{ p.getidProduit() }}">{{ p.getLibelleProduit() }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div>
+        <button class="btn btn-success" onclick='swal({ title:"Félicitation!", text: "Produit ajouter avec succés !", type: "success", buttonsStyling: false, confirmButtonClass: "btn btn-success"})'>
+            <i class="material-icons">check</i>
+            Confirmation ajout produit Au Stock</button>
+    </div>
+            <a href="{{ path('stock_affichageStock', {'idPat': produit[0].Patisserie.getIdPatisserie()}) }}">
+
+                <button class="btn"   >
+                      <span class="btn-label">
+                        <i class="material-icons"  ></i>
+                      </span>
+                    Annuler l'ajout Retour Vers le Stock
+                </button>
+            </a>
+    <img align="center"  src="{{ asset('images/stockajout.jpg')}}" alt="Logo"/>
+
+    <div>
+
+    </div>
+
+{% endblock %}
